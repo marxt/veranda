@@ -116,7 +116,7 @@ class GeoTiffRasterTimeStack(object):
         if self.file_ts is not None:
             path = tempfile.gettempdir()
             date_str = datetime.utcnow().strftime("%Y%m%d%H%M%S")
-            tmp_filename = "{:}.vrt".format(date_str)
+            tmp_filename = "{}_{:}.vrt".format(os.getpid(), date_str)
             vrt_filename = os.path.join(path, tmp_filename)
             create_vrt_file(vrt_filename, self.file_ts['filenames'],
                             band=self.file_band)
